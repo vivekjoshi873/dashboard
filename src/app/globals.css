@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #FFFFFF;
+  --color-foreground: #0A0A0A;
+
+  --color-card: #F5F5F7; /* light card like mockup */
+  --color-card-foreground: #0F0F13;
+
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0F0F13;
+
+  --color-primary: #8C52FF;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #F1F1F4; /* light chip/bg */
+  --color-secondary-foreground: #3A3A3A;
+
+  --color-muted: #EFEFF2; /* subtle panels */
+  --color-muted-foreground: #6F6F78;
+
+  --color-accent: #FFFFFF; /* white surfaces */
+  --color-accent-foreground: #2E2E34;
+
+  --color-destructive: #EE0000;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: #E2E2E8; /* soft borders */
+  --color-input: #E9E9EF;
+  --color-ring: #8C52FF;
+
+  --color-chart-1: #8C52FF;
+  --color-chart-2: #E0BBE4;
+  --color-chart-3: #957DAD;
+  --color-chart-4: #D29BB9;
+  --color-chart-5: #A3D8CD;
+
+  --color-create-invoice-button: #F7F7FB; /* header card */
+  --color-create-invoice-button-foreground: #8C52FF;
+  --color-create-invoice-button-icon: #8C52FF;
+  --color-create-invoice-button-icon-background: #F0E6FF;
+  --color-helper-text: #8D6AD6;
+
+  --color-purple-text: #8C52FF;
+  --color-light-purple-background: #F7F1FF;
+  --color-border-light-purple: #E8D8FF;
+  --color-dark-text-on-light: #4A4A55;
+  --color-dark-label: #9A9AA3;
+
+  --color-invoice-status-unpaid: #ECECEF;
+  --color-invoice-status-partially-paid: #FFF6CF;
+  --color-invoice-status-paid: #DDF8E3;
+  --color-invoice-status-overdue: #FFE5E5;
+  --color-invoice-status-disputed: #FFE5E5;
+  --color-invoice-status-awaited: #FFF6CF;
+  --color-invoice-status-draft: #ECECEF;
+
+  --color-invoice-status-unpaid-foreground: #6F6F78;
+  --color-invoice-status-partially-paid-foreground: #B6911E;
+  --color-invoice-status-paid-foreground: #2E9E4D;
+  --color-invoice-status-overdue-foreground: #CC3333;
+  --color-invoice-status-disputed-foreground: #CC3333;
+  --color-invoice-status-awaited-foreground: #B6911E;
+  --color-invoice-status-draft-foreground: #6F6F78;
+
+  --color-chart-line: #BB8EDD;
+  --color-chart-bar: #8C52FF;
+
+  --radius-lg: 1.25rem; /* round cards like mockup */
+  --radius-md: 0.75rem;
+  --radius-sm: 0.375rem;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: var(--radius-md); /* Shadcn's default radius */
+
+    /* Additional custom properties based on design system */
+    --create-invoice-button: var(--color-create-invoice-button);
+    --create-invoice-button-foreground: var(--color-create-invoice-button-foreground);
+    --create-invoice-button-icon: var(--color-create-invoice-button-icon);
+    --create-invoice-button-icon-background: var(--color-create-invoice-button-icon-background);
+    --helper-text: var(--color-helper-text);
+    --purple-text: var(--color-purple-text);
+    --light-purple-background: var(--color-light-purple-background);
+    --border-light-purple: var(--color-border-light-purple);
+    --dark-text-on-light: var(--color-dark-text-on-light);
+    --dark-label: var(--color-dark-label);
+
+    --invoice-status-unpaid: var(--color-invoice-status-unpaid);
+    --invoice-status-partially-paid: var(--color-invoice-status-partially-paid);
+    --invoice-status-paid: var(--color-invoice-status-paid);
+    --invoice-status-overdue: var(--color-invoice-status-overdue);
+    --invoice-status-disputed: var(--color-invoice-status-disputed);
+    --invoice-status-awaited: var(--color-invoice-status-awaited);
+    --invoice-status-draft: var(--color-invoice-status-draft);
+
+    --invoice-status-unpaid-foreground: var(--color-invoice-status-unpaid-foreground);
+    --invoice-status-partially-paid-foreground: var(--color-invoice-status-partially-paid-foreground);
+    --invoice-status-paid-foreground: var(--color-invoice-status-paid-foreground);
+    --invoice-status-overdue-foreground: var(--color-invoice-status-overdue-foreground);
+    --invoice-status-disputed-foreground: var(--color-invoice-status-disputed-foreground);
+    --invoice-status-awaited-foreground: var(--color-invoice-status-awaited-foreground);
+    --invoice-status-draft-foreground: var(--color-invoice-status-draft-foreground);
+
+    --chart-line: var(--color-chart-line);
+    --chart-bar: var(--color-chart-bar);
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--foreground);
+    background-color: var(--background);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
